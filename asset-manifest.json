@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/newtodo/static/css/main.34de6062.chunk.css",
+    "main.js": "/newtodo/static/js/main.3f316b38.chunk.js",
+    "main.js.map": "/newtodo/static/js/main.3f316b38.chunk.js.map",
+    "runtime-main.js": "/newtodo/static/js/runtime-main.8ee34f10.js",
+    "runtime-main.js.map": "/newtodo/static/js/runtime-main.8ee34f10.js.map",
+    "static/js/2.4a0b62c4.chunk.js": "/newtodo/static/js/2.4a0b62c4.chunk.js",
+    "static/js/2.4a0b62c4.chunk.js.map": "/newtodo/static/js/2.4a0b62c4.chunk.js.map",
+    "index.html": "/newtodo/index.html",
+    "precache-manifest.40ae419874a0e9340ed92c56fad0c903.js": "/newtodo/precache-manifest.40ae419874a0e9340ed92c56fad0c903.js",
+    "service-worker.js": "/newtodo/service-worker.js",
+    "static/css/main.34de6062.chunk.css.map": "/newtodo/static/css/main.34de6062.chunk.css.map"
+  }
+}

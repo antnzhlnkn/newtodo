@@ -8,6 +8,7 @@ class AddTodo extends Component {
     static propTypes = {
         uid: PropTypes.string,
         isDone : PropTypes.bool.isRequired,
+        date: PropTypes.instanceOf(Date),
         firestore: PropTypes.shape({
             add: PropTypes.func.isRequired
         }).isRequired
@@ -34,7 +35,8 @@ class AddTodo extends Component {
             {
                 uid: this.props.uid,
                 name: this.state.todo,
-                isDone : this.props.isDone
+                isDone : this.props.isDone,
+                date: this.props.date
             }
         )
         this.setState({ todo: '' })
@@ -44,7 +46,8 @@ class AddTodo extends Component {
 const mapStateToProps = state => {
     return {
         uid: state.firebase.auth.uid,
-        isDone: false
+        isDone: false,
+        date: new Date()
     }
 }
 

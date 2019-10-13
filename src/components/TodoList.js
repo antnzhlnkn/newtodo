@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { firestoreConnect } from 'react-redux-firebase'
+import Moment from 'react-moment';
+import * as moment from 'moment';
+
 
 import AddTodo from './AddTodo'
 
@@ -40,6 +43,10 @@ class TodoList extends Component {
                     checked={todo.isDone}
                     onChange={() => this.props.completTodo(todo)}
                 />
+                {todo.date ? <span>Hours: {((moment.duration(moment().unix()*1000).asHours())-moment.duration(todo.date.seconds*1000).asHours()).toFixed(1)}  </span> : null}
+                {todo.date ? <span>Days: {((moment.duration(moment().unix()*1000).asDays())-moment.duration(todo.date.seconds*1000).asDays()).toFixed()} </span> : null}
+                <button onClick={()=>this.refreshTodos(todo)}>refresh</button>
+                <div><button onClick={()=>this.delTodos(todo)}>delete</button></div>
             </div>
         )
     }
@@ -66,7 +73,25 @@ class TodoList extends Component {
                 {
                     name: this.props.completedTodo.name,
                     isDone: this.props.completedTodo.isDone,
-                    uid: this.props.completedTodo.uid
+                    uid: this.props.completedTodo.uid,
+                    date: this.props.completedTodo.date ? this.props.completedTodo.date : new Date()
+                }
+            );
+    }
+    delTodos(todo) {
+        this.props.firestore.collection('todos')
+            .doc(todo.id)
+            .delete()
+    }
+    refreshTodos(todo) {
+        this.props.firestore.collection('todos')
+            .doc(todo.id)
+            .set(
+                {
+                    date: new Date(),
+                    name: todo.name,
+                    isDone: todo.isDone,
+                    uid: todo.uid
                 }
             );
     }
